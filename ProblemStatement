@@ -1,0 +1,20 @@
+Design:
+
+Add Student: A form that takes inputs like name, roll number, and class of the student. The form will be submitted to the database using a POST request.
+
+Add Marks: Another form that takes inputs like student roll number, marks in a subject (English, Maths, Science), and semester. The form will be submitted to the database using a POST request.
+
+Reports: The reports will be generated from the data stored in the database.
+
+Average Percentage of whole class in recent semester: The average marks of all students for each subject in the recent semester will be calculated.
+
+Average marks of Students in a subject: The average marks of students in a particular subject across all semesters will be calculated.
+
+Top 2 Consistent Students across all semesters: The average marks of students across all semesters will be calculated, and the top 2 students with the highest average marks will be displayed.
+Local Setup:
+
+Elastic: A NoSQL database will be used to store the data entered through the forms. Elasticsearch can be used as it provides a fast and scalable search solution.
+
+Kibana: A visual analytics platform that can be used to display the reports generated from the data stored in Elasticsearch.
+
+Spring Boot with JSP: A web application framework that can be used to create the forms for adding students and marks and to display the reports. JSP (JavaServer Pages) can be used as a view template to render the reports.
