@@ -1,0 +1,60 @@
+ the implementation:
+
+Data model classes:
+java
+
+public class Student {
+   private String name;
+   private int rollNumber;
+   private String studentClass;
+   
+   //getters and setters for each field
+}
+
+public class SubjectMarks {
+   private int rollNumber;
+   private String subject;
+   private int marks;
+   private int semester;
+   
+   //getters and setters for each field
+}
+Spring Boot controller for handling POST request in Add Student form:
+less
+@RestController
+@RequestMapping("/api/students")
+public class StudentController {
+   private final StudentService studentService;
+   
+   @Autowired
+   public StudentController(StudentService studentService) {
+      this.studentService = studentService;
+   }
+   
+   @PostMapping
+   public ResponseEntity<Void> addStudent(@RequestBody Student student) {
+      studentService.addStudent(student);
+      return new ResponseEntity<>(HttpStatus.CREATED);
+   }
+}
+Service class for saving the student data to the database:
+java
+
+@Service
+public class StudentService {
+   private final ElasticsearchTemplate elasticsearchTemplate;
+   
+   @Autowired
+   public StudentService(ElasticsearchTemplate elasticsearchTemplate) {
+      this.elasticsearchTemplate = elasticsearchTemplate;
+   }
+   
+   public void addStudent(Student student) {
+      IndexQuery indexQuery = new IndexQueryBuilder().withId(String.valueOf(student.getRollNumber()))
+                                                      .withObject(student)
+                                                      .build();
+      elasticsearchTemplate.index(indexQuery);
+      elasticsearchTemplate.refresh(Student.class);
+   }
+}
+This is just a sample code to give an idea of how the low-level design can be implemented in Java using Spring Boot and Elasticsearch. The actual code may vary depending on the specific requirements and constraints.
