@@ -1,0 +1,24 @@
+The following is a low-level design in Java for the application:
+
+Data model:
+
+Create a Java class Student to store student information like name, roll number, and class.
+Create another Java class SubjectMarks to store subject marks for each student, including subject name, marks, and semester.
+
+
+Forms:
+
+Create JSP pages for each form (Add Student and Add Marks) with input fields like text boxes and dropdown menus.
+Create a controller class using Spring Boot that handles the POST request and saves the form data to the Elasticsearch database.
+
+Reports:
+
+Create a controller class using Spring Boot that retrieves the data from the Elasticsearch database and calculates the required reports such as average percentage of the whole class in the recent semester, average marks of students in a subject, and the top 2 consistent students.
+Create JSP pages to display the reports in a visually appealing way.
+
+
+Database integration:
+
+Connect the application to the Elasticsearch database using the Java API for Elasticsearch (JEST) or Spring Data Elasticsearch.
+Index the data model classes (Student and SubjectMarks) into the database for searching and retrieving.
+This low-level design provides a basic outline of the components needed for the application and the interactions between them. The actual implementation may vary depending on specific requirements and constraints.
